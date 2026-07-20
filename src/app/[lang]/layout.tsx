@@ -11,6 +11,9 @@ import { siteUrl } from "@/lib/shared"
 export const metadata: Metadata = {
   description:
     "A high-performance Minecraft server software that respects vanilla behavior, maintains full plugin compatibility, and is built for servers that demand the best.",
+  icons: {
+    icon: "/favicon.svg",
+  },
   metadataBase: new URL(siteUrl),
   title: {
     default: "Leaf",
