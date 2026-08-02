@@ -8,6 +8,7 @@ import {
 import { setCacheHandler } from "vinext/shims/cache"
 
 import { refreshBuildCache } from "@/lib/build-cache"
+import { refreshStatsCache } from "@/lib/stats"
 import { setKV } from "@/lib/runtime-kv"
 
 interface KVNamespace {
@@ -29,6 +30,7 @@ interface KVNamespace {
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> }
   VINEXT_CACHE: KVNamespace
+  GITHUB_TOKEN?: string
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -50,8 +52,16 @@ interface ScheduledController {
 
 let cacheReady = false
 
+function injectGitHubToken(env: Env): void {
+  if (env.GITHUB_TOKEN) {
+    process.env.GITHUB_TOKEN = env.GITHUB_TOKEN
+  }
+}
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    injectGitHubToken(env)
+
     // oxlint-disable-next-line typescript/no-unnecessary-condition - 本地就是没有这个变量
     if (!cacheReady && env?.VINEXT_CACHE) {
       // 大 TTL 用来削减冗余读取
@@ -92,6 +102,7 @@ export default {
   ): Promise<void> {
     // oxlint-disable-next-line typescript/no-unnecessary-condition
     if (!env?.VINEXT_CACHE) return
-    await refreshBuildCache(env.VINEXT_CACHE)
+    injectGitHubToken(env)
+    await Promise.all([refreshBuildCache(env.VINEXT_CACHE), refreshStatsCache(env.VINEXT_CACHE)])
   },
 }

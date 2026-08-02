@@ -1,3 +1,5 @@
+import { getKV, type KVNamespace } from "./runtime-kv"
+
 // 数据源类型
 type GitHubRepo = {
   stargazers_count: number
@@ -80,7 +82,30 @@ async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   }
 }
 
+const STATS_KEY = "leaf:cache:stats"
+const STATS_TTL_SECONDS = 21_600 // 6h 兜底
+
 export async function getStats(): Promise<Stats> {
+  const cached = await readCachedStats()
+  if (cached) return cached
+
+  const stats = await computeStats()
+  const kv = getKV()
+  if (kv && isUsable(stats)) {
+    try {
+      await kv.put(STATS_KEY, JSON.stringify(stats), { expirationTtl: STATS_TTL_SECONDS })
+    } catch {
+      // 缓存写失败不影响响应
+    }
+  }
+  return stats
+}
+
+function isUsable(stats: Stats): boolean {
+  return stats.version !== "unknown" && stats.stars !== "unknown"
+}
+
+async function computeStats(): Promise<Stats> {
   const [version, stars, servers] = await Promise.all([
     safe(fetchLatestVersion, FALLBACK.version),
     safe(fetchStars, Number.NaN),
@@ -91,5 +116,24 @@ export async function getStats(): Promise<Stats> {
     servers: Number.isFinite(servers) ? roundDown(servers) : FALLBACK.servers,
     stars: Number.isFinite(stars) ? roundDown(stars) : FALLBACK.stars,
     version,
+  }
+}
+
+export async function readCachedStats(): Promise<Stats | null> {
+  const kv = getKV()
+  if (!kv) return null
+  const raw = await kv.get(STATS_KEY)
+  if (!raw) return null
+  try {
+    return JSON.parse(raw) as Stats
+  } catch {
+    return null
+  }
+}
+
+export async function refreshStatsCache(kv: KVNamespace): Promise<void> {
+  const stats = await computeStats()
+  if (isUsable(stats)) {
+    await kv.put(STATS_KEY, JSON.stringify(stats), { expirationTtl: STATS_TTL_SECONDS })
   }
 }
