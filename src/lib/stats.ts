@@ -134,6 +134,10 @@ export async function readCachedStats(): Promise<Stats | null> {
 export async function refreshStatsCache(kv: KVNamespace): Promise<void> {
   const stats = await computeStats()
   if (isUsable(stats)) {
-    await kv.put(STATS_KEY, JSON.stringify(stats), { expirationTtl: STATS_TTL_SECONDS })
+    const nextRaw = JSON.stringify(stats)
+    const prevRaw = await kv.get(STATS_KEY)
+    if (prevRaw !== nextRaw) {
+      await kv.put(STATS_KEY, nextRaw, { expirationTtl: STATS_TTL_SECONDS })
+    }
   }
 }
