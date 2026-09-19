@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/i18n"
 const intlLocale: Record<Locale, string> = {
   de: "de-DE",
   en: "en-US",
+  ru: "ru-RU",
   zh: "zh-CN",
 }
 

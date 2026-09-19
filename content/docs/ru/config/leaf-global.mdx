@@ -1,0 +1,31 @@
+---
+title: Глобальная конфигурация Leaf
+---
+
+import leafGlobal1211Ru from "./message/leaf-global-1-21-1-ru.ts"
+import leafGlobal1214Ru from "./message/leaf-global-1-21-4-ru.ts"
+import { ConfigSwitch } from "@/components/config/config-viewer"
+import leafGlobalLatestRu from "./message/leaf-global-latest-ru.ts"
+import leafGlobal1211 from "@/components/config/data/leaf-global-1-21-1"
+import leafGlobal1214 from "@/components/config/data/leaf-global-1-21-4"
+import leafGlobalLatest from "@/components/config/data/leaf-global-latest"
+
+Ниже представлена структура и значения по умолчанию глобального конфигурационного файла Leaf (`config/leaf-global.yml`).
+
+Нажмите на любой параметр конфигурации, чтобы просмотреть подробную информацию.
+
+Вы можете перезагрузить конфигурацию во время работы сервера командой `/leaf reload`. Горячая перезагрузка асинхронных модулей **не поддерживается**.
+
+<ConfigSwitch
+  data={{
+    "1.21.11": leafGlobalLatest,
+    "1.21.4": leafGlobal1214,
+    "1.21.1": leafGlobal1211,
+  }}
+  messages={{
+    "1.21.11": leafGlobalLatestRu,
+    "1.21.4": leafGlobal1214Ru,
+    "1.21.1": leafGlobal1211Ru,
+  }}
+/>
+

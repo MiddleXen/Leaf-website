@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "---Введение---",
+    "getting-started",
+    "faq",
+    "useful-sites",
+    "---Конфигурация---",
+    "config/leaf-global",
+    "config/gale-global",
+    "config/gale-world-defaults",
+    "config/jvm-flags",
+    "---Разработка---",
+    "dev/guide",
+    "dev/api",
+    "dev/contributing"
+  ],
+  "root": true
+}
+

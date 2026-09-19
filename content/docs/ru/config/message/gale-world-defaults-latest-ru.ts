@@ -1,0 +1,289 @@
+import type { ConfigMessages } from "@/components/config/config-viewer"
+import type config from "@/components/config/data/gale-world-defaults-latest"
+
+const ru: ConfigMessages<typeof config> = {
+  "gameplay-mechanics": {
+    "entities-can-random-stroll-into-non-ticking-chunks": {
+      desc: `Whether entities that are wandering around randomly can also pathfind into non-ticking chunks.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td><code>false</code></td></tr>
+                <tr><td><i>Ванильное поведение</i></td><td><code>true</code></td></tr>
+                </table>`,
+    },
+    "entity-wake-up-duration-ratio-standard-deviation": {
+      desc: `If a value > \`0\` is given, waking up inactive entities happens spread over time, instead of many entities at once.<br>
+                This makes entities feel and behave more natural.<br>
+                <br>
+                This setting is the [coefficient of variation](https://en.wikipedia.org/wiki/Coefficient_of_variation), or \`σ / μ\` (the ratio of the standard deviation to the mean) of the inactivity duration.<br>
+                <br>
+                In other words, this setting is the value \`σ\`, so that the regular inactivity duration will be multiplied by a factor \`normal_distribution(μ = 1, σ)\`.<br>
+                <br>
+                If a value &leq; \`0\` is given, variable entity wake-up is disabled.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td><code>0.2</code><br></td><td><code>0.2</code></td><td><code>0.0</code></td><td>-</td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td>-</td></tr>
+                <tr><td><i>Поведение Paper</i></td><td><code>0.0</code></td></tr>
+                </table>`,
+    },
+    fixes: {
+      "broadcast-crit-animations-as-the-entity-being-critted": {
+        desc: `Whether to broadcast crit animations as the entity being critted.<br>
+                    <br>
+                    This does not affect where the crit animation is shown: it is always shown on the entity being critted.<br>
+                    However, normally (if set to \`false\`), the crit animation is broadcast as the player doing the crit, meaning anyone who cannot see the player cannot see the crit.<br>
+                    <br>
+                    If set to \`true\`, the crit animation is broadcast as the entity being hit, meaning anyone that can see the entity can see the crit.
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td>-<br></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td>-</td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>false</code></td></tr>
+                    </table>`,
+      },
+      "mc-121706": {
+        desc: `Whether to fix [MC-121706](https://bugs.mojang.com/browse/MC-121706).
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                    </table>`,
+      },
+      "mc-238526": {
+        desc: `Whether to fix [MC-238526](https://bugs.mojang.com/browse/MC-238526).
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td>-</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                    </table>`,
+      },
+    },
+    "hide-flames-on-entities-with-fire-resistance": {
+      desc: `Whether to hide visual flames for entities that are on fire, but also have the Fire Resistance potion effect.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td>-<br></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Ванильное поведение</i></td><td><code>false</code></td></tr>
+                </table>`,
+    },
+    "try-respawn-ender-dragon-after-end-crystal-place": {
+      desc: `Whether able to attempt to respawn the ender dragon after an end crystal has been placed in one of the right positions on the fountain.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td>-</td></tr>
+                <tr><td><i>Ванильное поведение</i></td><td><code>true</code></td></tr>
+                </table>`,
+    },
+  },
+  "small-optimizations": {
+    "load-chunks": {
+      __desc__: `Настройки загрузки чанков при определённых действиях сущностей.`,
+      "to-activate-climbing-entities": {
+        desc: `Загружать ли чанки для активации карабкающихся сущностей.
+                <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td>-</td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>false</code></td></tr>
+                    <tr><td><i>Поведение Paper</i></td><td><code>true</code></td></tr>
+                    </table>`,
+      },
+      "to-spawn-phantoms": {
+        desc: `Загружать ли чанки для спавна фантомов.
+                <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>false</code></td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>true</code></td></tr>
+                    </table>`,
+      },
+    },
+    "max-projectile-chunk-loads": {
+      __desc__: `Ограничение загрузки чанков снарядами.`,
+      "per-projectile": {
+        max: {
+          desc: `Максимальное число загрузок чанков на один снаряд.
+                <table>
+                        <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                        <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                        <tr><td><code>8</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>
+                        </table>
+                        <table>
+                        <tr><td><b>Значения для целей</b></td><td></td></tr>
+                        <tr><td><i>Оптимизация</i></td><td><code>8</code></td></tr>
+                        <tr><td><i>Ванильное поведение</i></td><td><code>-1</code></td></tr>
+                        </table>`,
+        },
+        "remove-from-world-after-reach-limit": {
+          desc: `Удалять ли снаряд из мира при достижении лимита загрузки чанков.
+                <table>
+                        <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                        <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                        <tr><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                        </table>
+                        <table>
+                        <tr><td><b>Значения для целей</b></td><td></td></tr>
+                        <tr><td><i>Оптимизация</i></td><td><code>true</code> in extreme circumstances, but this is risky</td></tr>
+                        <tr><td><i>Ванильное поведение</i></td><td><code>false</code></td></tr>
+                        </table>`,
+        },
+        "reset-movement-after-reach-limit": {
+          desc: `Сбрасывать ли движение снаряда при достижении лимита загрузки чанков.
+                <table>
+                        <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                        <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                        <tr><td>-</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                        </table>
+                        <table>
+                        <tr><td><b>Значения для целей</b></td><td></td></tr>
+                        <tr><td><i>Оптимизация</i></td><td><code>true</code></td></tr>
+                        <tr><td><i>Ванильное поведение</i></td><td><code>false</code></td></tr>
+                        </table>`,
+        },
+      },
+      "per-tick": {
+        desc: `Максимальное число загрузок чанков снарядами за один тик.
+                <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>10</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>2</code></td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>-1</code></td></tr>
+                    </table>`,
+      },
+    },
+    "reduced-intervals": {
+      "acquire-poi-for-stuck-entity": {
+        desc: `The extra interval (on top of the regular interval) for entities that are stuck (e.g. in a vehicle) to attempt to acquire a POI (such as a villager job block).<br>
+                    (Единица измерения: тики)<br>
+                    If they become unstuck during this time, they will immediately be free to acquire a POI again.<br>
+                    For example, if set to \`100\`, stuck entities will try to find a POI every 5 seconds.<br>
+                    <br>
+                    If a value < \`0\` is given, it will default to the same as Paper's behavior.
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>60</code></td><td><code>60</code></td><td><code>200</code></td><td><code>0</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>200</code></td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>0</code></td></tr>
+                    </table>`,
+      },
+      "check-stuck-in-wall": {
+        desc: `The interval at which to check whether an entity is stuck in a wall, to deal suffocation damage.<br>
+                    (Единица измерения: тики)<br>
+                    <br>
+                    Since after dealing damage, there is an interval (this may change in the future, but approximately 1 second) at which entities cannot take repeated damage, delaying the suffocation check by less than 1 second is almost unnoticeable.<br>
+                    <br>
+                    For example:
+                    <ul>
+                    <li>If set to \`10\`, entities will check whether they are being suffocated every ½ second.</li>
+                    <li>If a value &leq; \`0\` is given, it will default to the same as Paper's behavior.</li>
+                    </ul>
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>10</code></td><td><code>10</code></td><td><code>1</code></td><td><code>1</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>10</code></td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>1</code></td></tr>
+                    </table>`,
+      },
+      "villager-item-repickup": {
+        desc: `The minimum delay for items dropped by villagers to be picked up by (other) entities.<br>
+                    (Единица измерения: тики)
+                    <ul>
+                    <li>Prevents villagers picking up farmed items before hoppers do in certain farm designs; that would otherwise be broken by the \`check-nearby-item.hopper\` setting described below.</li>
+                    <li>Reduces lag from villagers continuously throwing many items at each other when their inventories are full.</li>
+                    </ul>
+                    For example:
+                    <ul>
+                    <li>If set to \`100\`, entities can pick up items dropped by villagers after 5 seconds.</li>
+                    <li>If a value < \`0\` is given, it will default to the same as vanilla's behavior, which is currently \`10\` ticks (½ second).</li>
+                    </ul>
+                    <table>
+                    <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                    <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                    <tr><td><code>100</code></td><td><code>100</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>
+                    </table>
+                    <table>
+                    <tr><td><b>Значения для целей</b></td><td></td></tr>
+                    <tr><td><i>Оптимизация</i></td><td><code>100</code></td></tr>
+                    <tr><td><i>Ванильное поведение</i></td><td><code>-1</code></td></tr>
+                    </table>`,
+      },
+    },
+    "save-fireworks": {
+      desc: `Whether fireworks are saved when saving a chunk.<br>
+                Fireworks can bug out and not detonate, and it can very easily fill a chunk by using an automated dispenser.<br>
+                If set to \`false\`, chunk unloads will remove any fireworks, preventing this scenario.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td>-<br>(See <i>Оптимизация</i> below)</td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td><ul><li>Normally: - (doesn't matter much)<li>If you expect players to try to break your server: <code>false</code></li></ul></td></tr>
+                <tr><td><i>Ванильное поведение</i></td><td><code>true</code></td></tr>
+                </table>`,
+    },
+    "use-optimized-sheep-offspring-color": {
+      desc: `Whether to use a (much) faster way to choose a color when a new baby sheep is born.<br>
+                The color chosen is exactly the same as vanilla's behavior.<br>
+                <br>
+                However, in vanilla, it is possible to change the new color by changing the crafting recipe for combining dyes using a data pack.<br>
+                If set to \`true\`, any such crafting recipe changes will be ignored.
+                <table>
+                <tr><td></td><td><b>По умолчанию</b></td><td></td><td></td></tr>
+                <tr><td><b>Рекомендуется&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
+                <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                </table>
+                <table>
+                <tr><td><b>Значения для целей</b></td><td></td></tr>
+                <tr><td><i>Оптимизация</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Ванильное поведение</i></td><td><code>false</code></td></tr>
+                </table>`,
+    },
+  },
+}
+
+export default ru

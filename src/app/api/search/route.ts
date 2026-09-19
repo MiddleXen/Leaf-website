@@ -8,6 +8,7 @@ type OramaLocaleMap = Record<Locale, Parameters<typeof createFromSource>[1]>
 const searchLocaleMap: OramaLocaleMap = {
   de: { language: "german" },
   en: { language: "english" },
+  ru: { language: "russian" },
   zh: {
     components: { tokenizer: createTokenizer() },
     search: { threshold: 0, tolerance: 0 },

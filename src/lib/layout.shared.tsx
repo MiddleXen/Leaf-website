@@ -19,6 +19,12 @@ const localeUI = {
     navDownload: "Download",
     navHome: "Home",
   },
+  ru: {
+    displayName: "Русский",
+    navDocs: "Документация",
+    navDownload: "Скачать",
+    navHome: "Главная",
+  },
   zh: {
     displayName: "简体中文",
     navDocs: "文档",

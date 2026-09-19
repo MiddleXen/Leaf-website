@@ -1,0 +1,49 @@
+---
+title: Часто задаваемые вопросы
+---
+
+import { Callout } from "fumadocs-ui/components/callout"
+
+## ❓ · Насколько Leaf быстрее «любого другого форка Paper»?
+
+Вы можете ознакомиться со страницами [Производительность сущностей](./benchmark/entity-performance) и [Производительность генерации/загрузки чанков](./benchmark/chunk-generation). В будущем мы предоставим ещё более подробные и надёжные бенчмарки!
+
+## ❓ · Поддерживает ли Leaf плагины для Spigot/Paper?
+
+Да, Leaf обеспечивает точно такую же совместимость с плагинами, как и Paper. Если плагин не работает, попробуйте заменить Leaf на Purpur и протестировать ещё раз. Если проблема сохраняется, сообщите о ней в [репозитории Leaf на GitHub](https://github.com/Winds-Studio/Leaf/issues/new/choose).
+
+## ❓ · Включает ли Leaf в себя патчи Purpur?
+
+Да, Leaf содержит все патчи Purpur, однако некоторые настройки Purpur были перенесены в конфигурационные файлы Gale и Leaf.
+
+## ❓ · Как часто Leaf обновляет апстрим?
+
+Обычно каждые 1–3 недели, в зависимости от важности обновлений в апстриме.
+
+## ❓ · Как оптимизировать мой сервер?
+
+Вы можете воспользоваться [руководством от YouHaveTrouble](https://github.com/YouHaveTrouble/minecraft-optimization) и [руководством по оптимизации Paper-chan](https://paper-chan.moe/paper-optimization/), либо [руководством NitWikit](https://nitwikit.8aka.org/java/advance/optimize/intro/), составленным сообществом (на китайском языке).
+
+## ❓ · Есть ли известные несовместимости?
+
+В актуальной версии Leaf известных несовместимостей нет.
+
+Тем не менее, в более старых версиях были следующие нюансы:
+
+- В версиях Leaf < 1.21.1 наблюдалась несовместимость с плагином [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055).
+- В версиях Leaf < 1.21.8 при включённом асинхронном трекере и наличии [Citizens](https://www.spigotmc.org/resources/citizens.13811) или других плагинов, использующих реальные сущности в качестве NPC, требуется включить параметр `compat-mode` в настройках трекера либо отключить асинхронный трекер!
+
+Нашли несовместимый плагин? [Сообщите об этом здесь](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
+
+## ❓ · В чём разница между mojmap и reobf? Что выбрать?
+
+Они используют разные маппинги. Сборка Mojmap использует официальные маппинги Mojang, а reobf — маппинги Spigot. Если представлены два JAR-файла — один оканчивается на mojmap, а второй на reobf — вам следует использовать файл с mojmap.
+
+## ❓ · Как я могу поддержать проект?
+
+Любой желающий может поддержать нас через [Open Collective](https://opencollective.com/Winds-Studio) или [AFDIAN автора Dreeam](https://afdian.com/a/Dreeam) (поддерживаются PayPal / Stripe).
+
+<Callout title="Примечание" type="idea">
+  Хотите что-то добавить в этот _FAQ_? [Напишите нам](./getting-started#contact)!
+</Callout>
+

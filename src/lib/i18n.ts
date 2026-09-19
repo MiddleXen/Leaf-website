@@ -5,6 +5,7 @@ export const localeMap = {
   en: "english",
   zh: "chinese",
   de: "german",
+  ru: "russian",
 } as const
 
 export type Locale = keyof typeof localeMap

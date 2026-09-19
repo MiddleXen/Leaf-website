@@ -1,0 +1,39 @@
+---
+title: Подробнее о чёрном списке DAB
+---
+
+Параметр `dab.blacklisted-entities` принимает любой корректный формат списка YAML.
+
+Если вам требуется добавить в чёрный список только одну сущность, подойдёт любой из следующих форматов:
+
+```yaml
+dab:
+  blacklisted-entities: [villager]
+```
+
+или
+
+```yaml
+dab:
+  blacklisted-entities:
+    - villager
+```
+
+Если необходимо добавить несколько сущностей:
+
+```yaml
+dab:
+  blacklisted-entities: [villager, zombified_piglin]
+```
+
+или
+
+```yaml
+dab:
+  blacklisted-entities:
+    - villager
+    - zombified_piglin
+```
+
+Если вы не уверены в синтаксисе, проверьте файл в онлайн-валидаторе, например [YAML Checker](https://yamlchecker.org/).
+

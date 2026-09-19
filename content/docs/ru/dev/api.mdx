@@ -1,0 +1,71 @@
+---
+title: Руководство по API
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs"
+
+## Подключение зависимости
+
+<Tabs items={['Gradle', 'Maven']}>
+    <Tab value="Gradle">
+        ```kotlin title="build.gradle.kts"
+        repositories {
+          maven("https://maven.leafmc.one/snapshots/")
+        }
+
+        dependencies {
+            compileOnly("cn.dreeam.leaf:leaf-api:1.21.8-R0.1-SNAPSHOT")
+        }
+
+        java {
+          toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+        }
+        ```
+    </Tab>
+    <Tab value="Maven">
+        ```xml title="pom.xml"
+        <project>
+            <repositories>
+                <repository>
+                    <id>leafmc</id>
+                    <url>https://maven.leafmc.one/snapshots/</url>
+                </repository>
+            </repositories>
+
+            <dependencies>
+                <dependency>
+                    <groupId>cn.dreeam.leaf</groupId>
+                    <artifactId>leaf-api</artifactId>
+                    <version>1.21.8-R0.1-SNAPSHOT</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </project>
+        ```
+    </Tab>
+
+</Tabs>
+
+## Dev Bundle
+
+Dev Bundle — это инструмент из состава paperweight, позволяющий легко получать доступ к коду Minecraft NMS при разработке плагинов.
+Подробнее о настройке читайте в руководстве по [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/).
+
+Для использования Dev Bundle от Leaf внесите следующие изменения в конфигурацию зависимостей:
+
+<Tabs items={['Gradle']}>
+    <Tab value="Gradle">
+        ```kotlin title="build.gradle.kts"
+        repositories {
+            maven("https://maven.leafmc.one/snapshots/")
+        }
+
+        dependencies {
+            paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT") // [!code --]
+            paperweight.devBundle("cn.dreeam.leaf", "1.21.8-R0.1-SNAPSHOT") // [!code ++]
+        }
+        ```
+    </Tab>
+
+</Tabs>
+

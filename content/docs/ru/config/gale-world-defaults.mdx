@@ -1,0 +1,31 @@
+---
+title: Настройки миров Gale по умолчанию
+---
+
+import galeWorldDefaults1211Ru from "./message/gale-world-defaults-1-21-1-ru.ts"
+import galeWorldDefaults1214Ru from "./message/gale-world-defaults-1-21-4-ru.ts"
+import { ConfigSwitch } from "@/components/config/config-viewer"
+import galeWorldDefaultsLatestRu from "./message/gale-world-defaults-latest-ru.ts"
+import galeWorldDefaults1211 from "@/components/config/data/gale-world-defaults-1-21-1"
+import galeWorldDefaults1214 from "@/components/config/data/gale-world-defaults-1-21-4"
+import galeWorldDefaultsLatest from "@/components/config/data/gale-world-defaults-latest"
+
+Ниже представлена структура и значения по умолчанию конфигурационного файла настроек миров Gale (`config/gale-world-defaults.yml`).
+
+Нажмите на любой параметр конфигурации, чтобы просмотреть подробную информацию.
+
+<ConfigSwitch
+  data={{
+    "1.21.11": galeWorldDefaultsLatest,
+    "1.21.8": galeWorldDefaults1214, // Без изменений с 1.21.4
+    "1.21.4": galeWorldDefaults1214,
+    "1.21.1": galeWorldDefaults1211,
+  }}
+  messages={{
+    "1.21.11": galeWorldDefaultsLatestRu,
+    "1.21.8": galeWorldDefaults1214Ru,
+    "1.21.4": galeWorldDefaults1214Ru,
+    "1.21.1": galeWorldDefaults1211Ru,
+  }}
+/>
+
